@@ -14,7 +14,7 @@
  */
 
 function ld_add_settings_menu(){
-	add_management_page( 'Language Downloader', 'Language Downloader', 'manage_options', 'ld_language_downloader', 'ld_options_page' );
+	add_management_page( __('Language Downloader', 'language-downloader'), __('Language Downloader', 'language-downloader'), 'manage_options', 'ld_language_downloader', 'ld_options_page' );
 }
 
 add_action( 'admin_menu', 'ld_add_settings_menu' );
@@ -23,14 +23,15 @@ function ld_options_page(){
 	require_once( ABSPATH . 'wp-admin/includes/translation-install.php' );
 
 	if ( ! wp_can_install_language_pack() ) {
-		echo "You cannot install language packs. Sorry :-(";
+		echo __('You cannot install language packs. Sorry :-(', 'language-downloader' );
 		return;
 	}
 
 	if ( isset( $_GET['lang'] ) ) {
 		$langtoadd = $_GET['lang'];
 		wp_download_language_pack( $langtoadd );
-		echo '<div class="success"><p>Congrats! If everything worked, now ' . $langtoadd . ' has been downloaded!</p></div>';
+		$success = sprintf( __('Congrats! If everything worked, now %s has been downloaded!', 'language-downloader'), $langtoadd );
+		echo '<div class="success"><p>' . $success . '</p></div>';
 
 	}
 
