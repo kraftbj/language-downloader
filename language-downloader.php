@@ -4,7 +4,7 @@
  * Plugin Name: Language Downloader
  * Plugin URI:  http://www.brandonkraft.com/
  * Description: Allows on-the-fly language additions
- * Version:     0.1
+ * Version:     0.2
  * Author:      Brandon Kraft
  * Author URI:  http://www.brandonkraft.com
  * License:     GPL-2.0+
@@ -30,15 +30,22 @@ function ld_options_page(){
 	if ( isset( $_GET['lang'] ) ) {
 		$langtoadd = $_GET['lang'];
 		wp_download_language_pack( $langtoadd );
-	}
+		echo '<div class="success"><p>Congrats! If everything worked, now ' . $langtoadd . ' has been downloaded!</p></div>';
 
-	echo "Placeholder for more goodies. For now, add <code>&lang=[locale]</code> to the URL to download that language, e.g. <code>wp-admin/options-general.php?page=ld_language_downloader&lang=fr_FR</code> to download French.";
+	}
 
 	$languages = wp_get_available_translations();
 	echo '<h3>Possible Languages</h3><ul>';
+	echo '<form action="" method="get" name="ld_language_downloader"><input type="hidden" name="page" value="ld_language_downloader"><select name="lang">';
 	foreach ( $languages as $language ) {
-		echo '<li>'. esc_html( $language['native_name'] ) . ' &mdash; '. esc_html( $language['language'] ) . '</li>';
+		printf(
+			'<option value="%s" lang="%s"%s>%s</option>',
+			esc_attr( $language['language'] ),
+			esc_attr( $language['lang'] ),
+			$selected,
+			esc_html( $language['native_name'] )
+			);
 	}
-	echo '</ul>';
+	echo '</select><input type="submit"></form>';
 
 }
