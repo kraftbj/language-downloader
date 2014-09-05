@@ -23,7 +23,7 @@ function ld_options_page(){
 	require_once( ABSPATH . 'wp-admin/includes/translation-install.php' );
 
 	if ( ! wp_can_install_language_pack() ) {
-		echo __('You cannot install language packs. Sorry :-(', 'language-downloader' );
+		_e('You cannot install language packs. Sorry :-(', 'language-downloader' );
 		return;
 	}
 
