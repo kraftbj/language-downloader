@@ -14,7 +14,7 @@
  */
 
 function ld_add_settings_menu(){
-	add_options_page( 'Language Downloader', 'Language Downloader', 'manage_options', 'ld_language_downloader', 'ld_options_page' );
+	add_management_page( 'Language Downloader', 'Language Downloader', 'manage_options', 'ld_language_downloader', 'ld_options_page' );
 }
 
 add_action( 'admin_menu', 'ld_add_settings_menu' );
