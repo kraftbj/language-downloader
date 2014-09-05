@@ -9,7 +9,7 @@
  * Author URI:  http://www.brandonkraft.com
  * License:     GPL-2.0+
  * License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
- * Text Domain: genesis-enews-extended
+ * Text Domain: language-downloader
  * Domain Path: /languages
  */
 
