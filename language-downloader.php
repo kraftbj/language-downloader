@@ -34,4 +34,11 @@ function ld_options_page(){
 
 	echo "Placeholder for more goodies. For now, add <code>&lang=[locale]</code> to the URL to download that language, e.g. <code>wp-admin/options-general.php?page=ld_language_downloader&lang=fr_FR</code> to download French.";
 
+	$languages = wp_get_available_translations();
+	echo '<h3>Possible Languages</h3><ul>';
+	foreach ( $languages as $language ) {
+		echo '<li>'. esc_html( $language['native_name'] ) . ' &mdash; '. esc_html( $language['language'] ) . '</li>';
+	}
+	echo '</ul>';
+
 }
