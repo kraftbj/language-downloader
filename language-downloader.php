@@ -36,7 +36,7 @@ function ld_options_page(){
 	}
 
 	$languages = wp_get_available_translations();
-	echo '<h3>Possible Languages</h3><ul>';
+	echo '<h3>' . __( 'Possible Languages', 'language-downloader' ) . '</h3><ul>';
 	echo '<form action="" method="get" name="ld_language_downloader"><input type="hidden" name="page" value="ld_language_downloader"><select name="lang">';
 	foreach ( $languages as $language ) {
 		printf(
